@@ -1,29 +1,21 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'Caching',
-        }),
-    ],
     output: {
-        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
-        clean: true,
-    },
-    optimization: {
-        moduleIds: 'deterministic',
-        runtimeChunk: 'single',
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    test: /[\\/]node_module[\\/]/,
-                    name: 'vendoers',
-                    chunks: 'all',
-                },
-            },
+        filename: 'webpack-numbers.js',
+        library: {
+            name: "webpackNumbers",
+            type: "umd",
         },
     },
+    externals: {
+        lodash: {
+            commonjs: 'lodash',
+            commonjs2: 'lodash',
+            amd: 'lodash',
+            root: '_',
+        }
+    }
 };
