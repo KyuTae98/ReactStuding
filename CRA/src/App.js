@@ -2,7 +2,7 @@ import React from "react";
 
 const App = () => (
     <h1>
-        React,Webpack start!
+        React,Webpack start!!
     </h1>
 )
 
