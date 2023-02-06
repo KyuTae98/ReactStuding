@@ -37,6 +37,6 @@ module.exports = {
     },
 }
 //자 어떤 기능을 넣을지 생각해보자
-//1. 일단 babel css loder를 사용
-//2. devServer를 사용
-//3. dist를 이용해서 build 
+//1. 일단 babel css loder를 사용 V
+//2. devServer를 사용 V
+//3. dist를 이용해서 build V 
