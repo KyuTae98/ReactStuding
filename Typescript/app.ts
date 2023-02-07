@@ -1,17 +1,29 @@
-function add(n1: number, n2: number, showResult: boolean, phrase: string) {
-    const result = n1 + n2;
-    if (showResult) {
-        console.log(phrase + result);
+type combinable = number | string;//type 알리어스를 바꿔줄 수 있다. 
+
+//union타입을 사용할 경우 검사를 해야할 수 있다. 
+function combine(
+    input1: combinable,
+    input2: combinable,
+    resultType: 'as-number' | 'as-string'
+) {
+    let result;
+    if (typeof input1 === 'number' && typeof input2 === 'number' || resultType === 'as-number') {
+        result = +input1 + +input2;
+    } else {
+        result = input1.toString() + input2.toString();
     }
-    else {
-        return result;
-    }
+
+    /*if (resultType === 'as-number') {
+        return +result;//+는 number타입으로 만들어 준다. 
+    }*/
+    return result
 }
 
-//let으로 선언할 때는 어떤 타입인지 알려주는 것이 좋다
+const combinedAges = combine(30, 26, 'as-number');
+console.log(combinedAges)
 
-const number1 = 5;
-const number2 = 2.8;
-const printResult = true;
-const resultPhrase = 'Result is:';
-const result = add(number1, number2, printResult, resultPhrase);
+const combinedStringAges = combine('30', '26', 'as-number');
+console.log(combinedStringAges)
+
+const combinedNames = combine("Park", "angelina", 'as-string');
+console.log(combinedNames)

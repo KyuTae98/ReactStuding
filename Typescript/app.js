@@ -1,12 +1,20 @@
-function add(n1, n2, showResult) {
-    if (showResult) {
-        console.log(n1 + n2);
+//union타입을 사용할 경우 검사를 해야할 수 있다. 
+function combine(input1, input2, resultType) {
+    var result;
+    if (typeof input1 === 'number' && typeof input2 === 'number' || resultType === 'as-number') {
+        result = +input1 + +input2;
     }
     else {
-        return n1 + n2;
+        result = input1.toString() + input2.toString();
     }
+    /*if (resultType === 'as-number') {
+        return +result;//+는 number타입으로 만들어 준다.
+    }*/
+    return result;
 }
-var number1 = 5;
-var number2 = 2.8;
-var printResult = true;
-var result = add(number1, number2, printResult);
+var combinedAges = combine(30, 26, 'as-number');
+console.log(combinedAges);
+var combinedStringAges = combine('30', '26', 'as-number');
+console.log(combinedStringAges);
+var combinedNames = combine("Park", "angelina", 'as-string');
+console.log(combinedNames);
