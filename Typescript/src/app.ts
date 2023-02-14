@@ -5,7 +5,7 @@ let userName: string;
 if (typeof userInput === 'string') {
     userName = userInput;
 }
-
+/*
 function generateError(message: string, code: number): never {
     throw { message: message, errorCode: code }
 }
@@ -16,9 +16,19 @@ console.log(re)
 //타입스크립트 컴파일 하기. 
 //1. watch모드 이 방법은 원하는 파일에 --w 또는 --watch를 붙여서 tsc한다. 
 //장점: 편하고 간편하다.  단점: 하나의 파일만 해당해 큰 프로젝트에서는 효율적이지 않다. 
-
-
+*/
 const button = document.querySelector("button")!;
-button.addEventListener("click", () => {
-    console.log("HI")
-})
+function clickHandler(message: string) {
+    console.log('Clicked!' + message)
+}
+let buttonMsg = button.innerText;
+const Max:any = {
+    name:"Max",
+    age:30,
+
+}
+const new_max = Max;
+const hobbies = 'hobbies';
+Max[hobbies] = "ski"
+console.log(new_max)
+button.addEventListener("click", clickHandler.bind(null, buttonMsg))
