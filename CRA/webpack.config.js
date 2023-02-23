@@ -6,14 +6,20 @@ module.exports = {
     entry: './src/index.js',
     output: {
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, './dist'),
+        path: path.resolve(__dirname, 'dist'),
     },
+    devtool:'inline-source-map',
     devServer: {
         static: './public',
         hot: true,
     },
     module: {
         rules: [
+            {
+                test: /\.ts$/,
+                use:'ts-loader',
+                exclude:/node_modules/
+            },
             {
                 test: /\.(js|jsx)$/,
                 exclude: "/node_modules",
@@ -25,6 +31,9 @@ module.exports = {
                 use: ['style-loader', 'css-loader']
             }
         ]
+    },
+    resolve:{
+        extensions:['.ts','.js']
     },
     plugins: [
         new HtmlWebpackPlugin({
